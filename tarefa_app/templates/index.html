@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prevenção da Dengue</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .task {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 50%;
+            margin: 10px auto;
+            padding: 10px;
+            background: #f4f4f4;
+            border-radius: 5px;
+        }
+        .done {
+            text-decoration: line-through;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Evite Água Parada!</h1>
+    <p>Clique nas tarefas para marcá-las como concluídas.</p>
+    
+    {% for task in tasks %}
+        <div class="task {% if task.done %}done{% endif %}">
+            <span>{{ task.task }}</span>
+            <a href="/mark/{{ task.id }}">✔</a>
+        </div>
+    {% endfor %}
+    
+    <br>
+    <a href="/reset"><button>Reiniciar Tarefas</button></a>
+</body>
+</html>
